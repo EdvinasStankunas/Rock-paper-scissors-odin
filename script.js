@@ -59,7 +59,7 @@ function playRound(playerSelection, computerSelection) {
     console.log("Player wins! Scissors beat paper.");
     return PLAYER;
   }
-  return "Have you checked your spelling? :)";
+  console.log("Have you checked your spelling?");
 }
 
 function game() {
@@ -80,7 +80,7 @@ function game() {
 }
 
 function userPlay() {
-  const answer = prompt("Please insert your option");
+  const answer = prompt("Please insert your option", "Rock/paper/scissors");
   return answer;
 }
 
