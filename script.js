@@ -19,37 +19,69 @@ function getRandomNumber() {
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
+const PLAYER = "player";
+const COMPUTER = "computer";
+const TIE = "tie";
 
 function playRound(playerSelection, computerSelection) {
-  const player = playerSelection.toLowerCase();
+  const player = playerSelection?.toLowerCase();
   const computer = computerSelection.toLowerCase();
 
   if (player === computer) {
-    return "Tie game.";
+    console.log("Tie game");
+    return TIE;
   }
 
   if (player === ROCK) {
     if (computer === PAPER) {
-      return "Computer wins! Paper beats rock.";
+      console.log("Computer wins! Paper beats rock.");
+      return COMPUTER;
     }
 
-    return "Player wins! Rock beats scissors.";
+    console.log("Player wins! Rock beats scissors.");
+    return PLAYER;
   }
 
   if (player === PAPER) {
     if (computer === ROCK) {
-      return "Player wins! Paper beats rock.";
+      console.log("Player wins! Paper beats rock.");
+      return PLAYER;
     }
-    return "Computer wins! Scissors beat paper.";
+    console.log("Computer wins! Scissors beat paper.");
+    return COMPUTER;
   }
 
   if (player === SCISSORS) {
     if (computer === ROCK) {
-      return "Computer wins! Rock beats scissors.";
+      console.log("Computer wins! Rock beats scissors.");
+      return COMPUTER;
     }
-    return "Player wins! Scissors beat paper.";
+    console.log("Player wins! Scissors beat paper.");
+    return PLAYER;
   }
+  return "Have you checked your spelling? :)";
 }
-const playerSelection = ROCK;
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+  let user = 0;
+  let computer = 0;
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = userPlay();
+    const computerSelection = computerPlay();
+    const winner = playRound(playerSelection, computerSelection);
+    if (winner === PLAYER) {
+      user++;
+    }
+    if (winner === COMPUTER) {
+      computer++;
+    }
+  }
+  console.log(`User: ${user} Computer: ${computer}`);
+}
+
+function userPlay() {
+  const answer = prompt("Please insert your option");
+  return answer;
+}
+
+game();
