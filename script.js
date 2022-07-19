@@ -3,6 +3,7 @@ const btnContainer = document.querySelector("#btn-container");
 const rockBtn = document.createElement("button");
 rockBtn.classList.add("rock-btn");
 rockBtn.textContent = "Rock";
+rockBtn.addEventListener("click", gameRock);
 
 btnContainer.appendChild(rockBtn);
 
@@ -17,6 +18,31 @@ scissorsBtn.classList.add("scissors-btn");
 scissorsBtn.textContent = "Scissors";
 
 btnContainer.appendChild(scissorsBtn);
+
+const resultDiv = document.createElement("div");
+
+/*function userPlay() {
+  const answer = 
+  return answer;
+}
+*/
+
+function gameRock() {
+  let user = 0;
+  let computer = 0;
+  //for (let i = 0; i < 5; i++) {
+  const playerSelection = "rock";
+  const computerSelection = computerPlay();
+  const winner = playRound(playerSelection, computerSelection);
+  if (winner === PLAYER) {
+    user++;
+  }
+  if (winner === COMPUTER) {
+    computer++;
+  }
+  //}
+  console.log(`User: ${user} Computer: ${computer}`);
+}
 
 function computerPlay() {
   const randomNumber = getRandomNumber();
@@ -82,7 +108,7 @@ function playRound(playerSelection, computerSelection) {
   console.log("Have you checked your spelling?");
 }
 
-function game() {
+/* function game() {
   let user = 0;
   let computer = 0;
   //for (let i = 0; i < 5; i++) {
@@ -97,11 +123,6 @@ function game() {
   }
   //}
   console.log(`User: ${user} Computer: ${computer}`);
-}
+} */
 
-function userPlay() {
-  const answer = prompt("Please insert your option", "Rock/paper/scissors");
-  return answer;
-}
-
-game();
+//game();
