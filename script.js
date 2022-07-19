@@ -1,3 +1,23 @@
+const btnContainer = document.querySelector("#btn-container");
+
+const rockBtn = document.createElement("button");
+rockBtn.classList.add("rock-btn");
+rockBtn.textContent = "Rock";
+
+btnContainer.appendChild(rockBtn);
+
+const paperBtn = document.createElement("button");
+paperBtn.classList.add("paper-btn");
+paperBtn.textContent = "Paper";
+
+btnContainer.appendChild(paperBtn);
+
+const scissorsBtn = document.createElement("button");
+scissorsBtn.classList.add("scissors-btn");
+scissorsBtn.textContent = "Scissors";
+
+btnContainer.appendChild(scissorsBtn);
+
 function computerPlay() {
   const randomNumber = getRandomNumber();
 
@@ -65,17 +85,17 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   let user = 0;
   let computer = 0;
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = userPlay();
-    const computerSelection = computerPlay();
-    const winner = playRound(playerSelection, computerSelection);
-    if (winner === PLAYER) {
-      user++;
-    }
-    if (winner === COMPUTER) {
-      computer++;
-    }
+  //for (let i = 0; i < 5; i++) {
+  const playerSelection = userPlay();
+  const computerSelection = computerPlay();
+  const winner = playRound(playerSelection, computerSelection);
+  if (winner === PLAYER) {
+    user++;
   }
+  if (winner === COMPUTER) {
+    computer++;
+  }
+  //}
   console.log(`User: ${user} Computer: ${computer}`);
 }
 
