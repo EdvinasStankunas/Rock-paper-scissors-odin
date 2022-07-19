@@ -3,7 +3,11 @@ const btnContainer = document.querySelector("#btn-container");
 const rockBtn = document.createElement("button");
 rockBtn.classList.add("rock-btn");
 rockBtn.textContent = "Rock";
-rockBtn.addEventListener("click", gameRock);
+rockBtn.addEventListener("click", () => {
+
+userPlay();
+game();
+});
 
 btnContainer.appendChild(rockBtn);
 
@@ -21,28 +25,13 @@ btnContainer.appendChild(scissorsBtn);
 
 const resultDiv = document.createElement("div");
 
-/*function userPlay() {
+function userPlay() {
   const answer = 
   return answer;
 }
-*/
 
-function gameRock() {
-  let user = 0;
-  let computer = 0;
-  //for (let i = 0; i < 5; i++) {
-  const playerSelection = "rock";
-  const computerSelection = computerPlay();
-  const winner = playRound(playerSelection, computerSelection);
-  if (winner === PLAYER) {
-    user++;
-  }
-  if (winner === COMPUTER) {
-    computer++;
-  }
-  //}
-  console.log(`User: ${user} Computer: ${computer}`);
-}
+
+
 
 function computerPlay() {
   const randomNumber = getRandomNumber();
@@ -108,7 +97,7 @@ function playRound(playerSelection, computerSelection) {
   console.log("Have you checked your spelling?");
 }
 
-/* function game() {
+function game() {
   let user = 0;
   let computer = 0;
   //for (let i = 0; i < 5; i++) {
@@ -123,6 +112,6 @@ function playRound(playerSelection, computerSelection) {
   }
   //}
   console.log(`User: ${user} Computer: ${computer}`);
-} */
+}
 
 //game();
