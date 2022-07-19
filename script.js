@@ -4,9 +4,7 @@ const rockBtn = document.createElement("button");
 rockBtn.classList.add("rock-btn");
 rockBtn.textContent = "Rock";
 rockBtn.addEventListener("click", () => {
-
-userPlay();
-game();
+  game("rock");
 });
 
 btnContainer.appendChild(rockBtn);
@@ -14,25 +12,28 @@ btnContainer.appendChild(rockBtn);
 const paperBtn = document.createElement("button");
 paperBtn.classList.add("paper-btn");
 paperBtn.textContent = "Paper";
+paperBtn.addEventListener("click", () => {
+  game("paper");
+});
 
 btnContainer.appendChild(paperBtn);
 
 const scissorsBtn = document.createElement("button");
 scissorsBtn.classList.add("scissors-btn");
 scissorsBtn.textContent = "Scissors";
+scissorsBtn.addEventListener("click", () => {
+  game("scissors");
+});
 
 btnContainer.appendChild(scissorsBtn);
 
 const resultDiv = document.createElement("div");
 
-function userPlay() {
-  const answer = 
+/*function userPlay(buttonValue) {
+  const answer = buttonValue;
   return answer;
 }
-
-
-
-
+*/
 function computerPlay() {
   const randomNumber = getRandomNumber();
 
@@ -97,11 +98,11 @@ function playRound(playerSelection, computerSelection) {
   console.log("Have you checked your spelling?");
 }
 
-function game() {
+function game(buttonValue) {
   let user = 0;
   let computer = 0;
   //for (let i = 0; i < 5; i++) {
-  const playerSelection = userPlay();
+  const playerSelection = buttonValue;
   const computerSelection = computerPlay();
   const winner = playRound(playerSelection, computerSelection);
   if (winner === PLAYER) {
