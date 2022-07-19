@@ -27,13 +27,12 @@ scissorsBtn.addEventListener("click", () => {
 
 btnContainer.appendChild(scissorsBtn);
 
-const resultDiv = document.createElement("div");
+const resultDiv = document.querySelector("#result-div");
 
-/*function userPlay(buttonValue) {
-  const answer = buttonValue;
-  return answer;
-}
-*/
+const scoreDiv = document.querySelector("#score-div");
+
+function scoreBoard() {}
+
 function computerPlay() {
   const randomNumber = getRandomNumber();
 
@@ -60,48 +59,47 @@ const COMPUTER = "computer";
 const TIE = "tie";
 
 function playRound(playerSelection, computerSelection) {
-  const player = playerSelection?.toLowerCase();
+  const player = playerSelection;
   const computer = computerSelection.toLowerCase();
 
   if (player === computer) {
-    console.log("Tie game");
+    resultDiv.textContent = "Tie game";
     return TIE;
   }
 
   if (player === ROCK) {
     if (computer === PAPER) {
-      console.log("Computer wins! Paper beats rock.");
+      resultDiv.textContent = "Computer wins! Paper beats rock.";
       return COMPUTER;
     }
 
-    console.log("Player wins! Rock beats scissors.");
+    resultDiv.textContent = "Player wins! Rock beats scissors.";
     return PLAYER;
   }
 
   if (player === PAPER) {
     if (computer === ROCK) {
-      console.log("Player wins! Paper beats rock.");
+      resultDiv.textContent = "Player wins! Paper beats rock.";
       return PLAYER;
     }
-    console.log("Computer wins! Scissors beat paper.");
+    resultDiv.textContent = "Computer wins! Scissors beat paper.";
     return COMPUTER;
   }
 
   if (player === SCISSORS) {
     if (computer === ROCK) {
-      console.log("Computer wins! Rock beats scissors.");
+      resultDiv.textContent = "Computer wins! Rock beats scissors.";
       return COMPUTER;
     }
-    console.log("Player wins! Scissors beat paper.");
+    resultDiv.textContent = "Player wins! Scissors beat paper.";
     return PLAYER;
   }
-  console.log("Have you checked your spelling?");
+  resultDiv.textContent = "Have you checked your spelling?";
 }
 
 function game(buttonValue) {
   let user = 0;
   let computer = 0;
-  //for (let i = 0; i < 5; i++) {
   const playerSelection = buttonValue;
   const computerSelection = computerPlay();
   const winner = playRound(playerSelection, computerSelection);
@@ -111,8 +109,6 @@ function game(buttonValue) {
   if (winner === COMPUTER) {
     computer++;
   }
-  //}
-  console.log(`User: ${user} Computer: ${computer}`);
-}
 
-//game();
+  scoreDiv.textContent = `User: ${user} Computer: ${computer}`;
+}
