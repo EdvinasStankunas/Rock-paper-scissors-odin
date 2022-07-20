@@ -95,6 +95,7 @@ function playRound(playerSelection, computerSelection) {
       resultDiv.textContent = "Player wins! Paper beats rock.";
       return PLAYER;
     }
+
     resultDiv.textContent = "Computer wins! Scissors beat paper.";
     return COMPUTER;
   }
@@ -113,6 +114,7 @@ function game(buttonValue) {
   if (user === 5 || computer === 5) {
     return;
   }
+
   const playerSelection = buttonValue;
   const computerSelection = computerPlay();
   const winner = playRound(playerSelection, computerSelection);
