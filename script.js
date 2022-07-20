@@ -20,11 +20,9 @@ rockBtn.addEventListener("click", () => {
   game(ROCK);
   if (user === 5) {
     winnerDiv.textContent = "Winner: User";
-    return 0;
   }
   if (computer === 5) {
     winnerDiv.textContent = "Winner: Computer";
-    return 0;
   }
 });
 
@@ -37,11 +35,9 @@ paperBtn.addEventListener("click", () => {
   game(PAPER);
   if (user === 5) {
     winnerDiv.textContent = "Winner: User";
-    return 0;
   }
   if (computer === 5) {
     winnerDiv.textContent = "Winner: Computer";
-    return 0;
   }
 });
 
@@ -54,15 +50,26 @@ scissorsBtn.addEventListener("click", () => {
   game(SCISSORS);
   if (user === 5) {
     winnerDiv.textContent = "Winner: User";
-    return 0;
   }
   if (computer === 5) {
     winnerDiv.textContent = "Winner: Computer";
-    return 0;
   }
 });
 
 btnContainer.appendChild(scissorsBtn);
+
+const resetBtn = document.createElement("button");
+scissorsBtn.classList.add("reset-button");
+resetBtn.textContent = "Reset";
+resetBtn.addEventListener("click", () => {
+  user = 0;
+  computer = 0;
+  scoreDiv.textContent = `User: ${user} Computer: ${computer}`;
+  winnerDiv.textContent = "";
+  resultDiv.textContent = "";
+});
+
+btnContainer.appendChild(resetBtn);
 
 function computerPlay() {
   const randomNumber = getRandomNumber();
