@@ -1,10 +1,23 @@
 const btnContainer = document.querySelector("#btn-container");
 const winnerDiv = document.querySelector("#winner-div");
+const resultDiv = document.querySelector("#result-div");
+const scoreDiv = document.querySelector("#score-div");
+
+let user = 0;
+let computer = 0;
+
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
+const PLAYER = "player";
+const COMPUTER = "computer";
+const TIE = "tie";
 
 const rockBtn = document.createElement("button");
 rockBtn.classList.add("rock-btn");
 rockBtn.textContent = "Rock";
 rockBtn.addEventListener("click", () => {
+  game(ROCK);
   if (user === 5) {
     winnerDiv.textContent = "Winner: User";
     return 0;
@@ -13,7 +26,6 @@ rockBtn.addEventListener("click", () => {
     winnerDiv.textContent = "Winner: Computer";
     return 0;
   }
-  game("scissors");
 });
 
 btnContainer.appendChild(rockBtn);
@@ -22,6 +34,7 @@ const paperBtn = document.createElement("button");
 paperBtn.classList.add("paper-btn");
 paperBtn.textContent = "Paper";
 paperBtn.addEventListener("click", () => {
+  game(PAPER);
   if (user === 5) {
     winnerDiv.textContent = "Winner: User";
     return 0;
@@ -30,7 +43,6 @@ paperBtn.addEventListener("click", () => {
     winnerDiv.textContent = "Winner: Computer";
     return 0;
   }
-  game("scissors");
 });
 
 btnContainer.appendChild(paperBtn);
@@ -39,6 +51,7 @@ const scissorsBtn = document.createElement("button");
 scissorsBtn.classList.add("scissors-btn");
 scissorsBtn.textContent = "Scissors";
 scissorsBtn.addEventListener("click", () => {
+  game(SCISSORS);
   if (user === 5) {
     winnerDiv.textContent = "Winner: User";
     return 0;
@@ -47,14 +60,9 @@ scissorsBtn.addEventListener("click", () => {
     winnerDiv.textContent = "Winner: Computer";
     return 0;
   }
-  game("scissors");
 });
 
 btnContainer.appendChild(scissorsBtn);
-
-const resultDiv = document.querySelector("#result-div");
-
-const scoreDiv = document.querySelector("#score-div");
 
 function computerPlay() {
   const randomNumber = getRandomNumber();
@@ -73,13 +81,6 @@ function computerPlay() {
 function getRandomNumber() {
   return Math.floor(Math.random() * 3 + 0);
 }
-
-const ROCK = "rock";
-const PAPER = "paper";
-const SCISSORS = "scissors";
-const PLAYER = "player";
-const COMPUTER = "computer";
-const TIE = "tie";
 
 function playRound(playerSelection, computerSelection) {
   const player = playerSelection;
@@ -118,9 +119,6 @@ function playRound(playerSelection, computerSelection) {
     return PLAYER;
   }
 }
-
-let user = 0;
-let computer = 0;
 
 function game(buttonValue) {
   const playerSelection = buttonValue;
