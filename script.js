@@ -18,12 +18,6 @@ rockBtn.classList.add("rock-btn");
 rockBtn.textContent = "Rock";
 rockBtn.addEventListener("click", () => {
   game(ROCK);
-  if (user === 5) {
-    winnerDiv.textContent = "Winner: User";
-  }
-  if (computer === 5) {
-    winnerDiv.textContent = "Winner: Computer";
-  }
 });
 
 btnContainer.appendChild(rockBtn);
@@ -33,12 +27,6 @@ paperBtn.classList.add("paper-btn");
 paperBtn.textContent = "Paper";
 paperBtn.addEventListener("click", () => {
   game(PAPER);
-  if (user === 5) {
-    winnerDiv.textContent = "Winner: User";
-  }
-  if (computer === 5) {
-    winnerDiv.textContent = "Winner: Computer";
-  }
 });
 
 btnContainer.appendChild(paperBtn);
@@ -48,12 +36,6 @@ scissorsBtn.classList.add("scissors-btn");
 scissorsBtn.textContent = "Scissors";
 scissorsBtn.addEventListener("click", () => {
   game(SCISSORS);
-  if (user === 5) {
-    winnerDiv.textContent = "Winner: User";
-  }
-  if (computer === 5) {
-    winnerDiv.textContent = "Winner: Computer";
-  }
 });
 
 btnContainer.appendChild(scissorsBtn);
@@ -128,6 +110,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game(buttonValue) {
+  if (user === 5 || computer === 5) {
+    return;
+  }
   const playerSelection = buttonValue;
   const computerSelection = computerPlay();
   const winner = playRound(playerSelection, computerSelection);
@@ -135,8 +120,18 @@ function game(buttonValue) {
   if (winner === PLAYER) {
     user++;
   }
+
   if (winner === COMPUTER) {
     computer++;
   }
+
+  if (user === 5) {
+    winnerDiv.textContent = "Winner: User";
+  }
+
+  if (computer === 5) {
+    winnerDiv.textContent = "Winner: Computer";
+  }
+
   scoreDiv.textContent = `User: ${user} Computer: ${computer}`;
 }
