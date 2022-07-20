@@ -1,10 +1,19 @@
 const btnContainer = document.querySelector("#btn-container");
+const winnerDiv = document.querySelector("#winner-div");
 
 const rockBtn = document.createElement("button");
 rockBtn.classList.add("rock-btn");
 rockBtn.textContent = "Rock";
 rockBtn.addEventListener("click", () => {
-  game("rock");
+  if (user === 5) {
+    winnerDiv.textContent = "Winner: User";
+    return 0;
+  }
+  if (computer === 5) {
+    winnerDiv.textContent = "Winner: Computer";
+    return 0;
+  }
+  game("scissors");
 });
 
 btnContainer.appendChild(rockBtn);
@@ -13,7 +22,15 @@ const paperBtn = document.createElement("button");
 paperBtn.classList.add("paper-btn");
 paperBtn.textContent = "Paper";
 paperBtn.addEventListener("click", () => {
-  game("paper");
+  if (user === 5) {
+    winnerDiv.textContent = "Winner: User";
+    return 0;
+  }
+  if (computer === 5) {
+    winnerDiv.textContent = "Winner: Computer";
+    return 0;
+  }
+  game("scissors");
 });
 
 btnContainer.appendChild(paperBtn);
@@ -22,6 +39,14 @@ const scissorsBtn = document.createElement("button");
 scissorsBtn.classList.add("scissors-btn");
 scissorsBtn.textContent = "Scissors";
 scissorsBtn.addEventListener("click", () => {
+  if (user === 5) {
+    winnerDiv.textContent = "Winner: User";
+    return 0;
+  }
+  if (computer === 5) {
+    winnerDiv.textContent = "Winner: Computer";
+    return 0;
+  }
   game("scissors");
 });
 
@@ -108,6 +133,5 @@ function game(buttonValue) {
   if (winner === COMPUTER) {
     computer++;
   }
-  console.log(user);
   scoreDiv.textContent = `User: ${user} Computer: ${computer}`;
 }
