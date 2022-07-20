@@ -31,8 +31,6 @@ const resultDiv = document.querySelector("#result-div");
 
 const scoreDiv = document.querySelector("#score-div");
 
-function scoreBoard() {}
-
 function computerPlay() {
   const randomNumber = getRandomNumber();
 
@@ -94,21 +92,22 @@ function playRound(playerSelection, computerSelection) {
     resultDiv.textContent = "Player wins! Scissors beat paper.";
     return PLAYER;
   }
-  resultDiv.textContent = "Have you checked your spelling?";
 }
 
+let user = 0;
+let computer = 0;
+
 function game(buttonValue) {
-  let user = 0;
-  let computer = 0;
   const playerSelection = buttonValue;
   const computerSelection = computerPlay();
   const winner = playRound(playerSelection, computerSelection);
+
   if (winner === PLAYER) {
     user++;
   }
   if (winner === COMPUTER) {
     computer++;
   }
-
+  console.log(user);
   scoreDiv.textContent = `User: ${user} Computer: ${computer}`;
 }
